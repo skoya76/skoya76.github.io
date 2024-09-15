@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2 | KOHYA&#39;s CV</title>
+    <link>http://localhost:39021/publication_types/2/</link>
+      <atom:link href="http://localhost:39021/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
+    <description>2</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:39021/media/icon_hu7729264130191091259.png</url>
+      <title>2</title>
+      <link>http://localhost:39021/publication_types/2/</link>
+    </image>
+    
+    <item>
+      <title>ネットワーク状態に基づくRaft選挙パラメータの動的最適化</title>
+      <link>http://localhost:39021/publications/dicomo2024/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:39021/publications/dicomo2024/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

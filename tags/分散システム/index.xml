@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>分散システム | KOHYA&#39;s CV</title>
+    <link>http://localhost:39021/tags/%E5%88%86%E6%95%A3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/</link>
+      <atom:link href="http://localhost:39021/tags/%E5%88%86%E6%95%A3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/index.xml" rel="self" type="application/rss+xml" />
+    <description>分散システム</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:39021/media/icon_hu7729264130191091259.png</url>
+      <title>分散システム</title>
+      <link>http://localhost:39021/tags/%E5%88%86%E6%95%A3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/</link>
+    </image>
+    
+    <item>
+      <title>ネットワーク状態に基づくRaft選挙パラメータの動的最適化</title>
+      <link>http://localhost:39021/publications/dicomo2024/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:39021/publications/dicomo2024/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
