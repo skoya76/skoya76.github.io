@@ -1,20 +1,142 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kohya Shiozaki's Homepage</title><link>https://skoya76.github.io/</link><atom:link href="https://skoya76.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Kohya Shiozaki's Homepage</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><image><url>https://skoya76.github.io/media/icon_hu4263094216211371733.png</url><title>Kohya Shiozaki's Homepage</title><link>https://skoya76.github.io/</link></image><item><title>Selection Guidelines for Geographical SMR Protocols: A Communication Pattern-based Latency Modeling Approach</title><link>https://skoya76.github.io/publications/2024sss/</link><pubDate>Sat, 14 Sep 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2024sss/</guid><description/></item><item><title>💵 Grant: JASSO Exchange Student Support Program</title><link>https://skoya76.github.io/achievements/2024jasso/</link><pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/achievements/2024jasso/</guid><description>&lt;p>&lt;strong>Grant Amount&lt;/strong>: ¥610,000&lt;/p>
-&lt;ul>
-&lt;li>Monthly stipend: ¥80,000 for 6 months&lt;/li>
-&lt;li>Additional allowance: ¥130,000&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Organization&lt;/strong>: Japan Student Services Organization.&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;/li>
-&lt;li>
-&lt;/li>
-&lt;/ul></description></item><item><title>🏆 Outstanding Presentation Award: The 20th Workshop on Theoretical Computer Science (WTCS)</title><link>https://skoya76.github.io/achievements/2023wtcs/</link><pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/achievements/2023wtcs/</guid><description/></item><item><title>Dynamic Optimization of Raft Election Parameters based on Network Measurements</title><link>https://skoya76.github.io/publications/2024wtcs/</link><pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2024wtcs/</guid><description/></item><item><title>💵 Grant: Overseas Training Support for Graduate Students</title><link>https://skoya76.github.io/achievements/2024kfe/</link><pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/achievements/2024kfe/</guid><description>&lt;p>&lt;strong>Grant Amount&lt;/strong>: ¥300,000&lt;/p>
-&lt;p>&lt;strong>Organization&lt;/strong>: KAMINO FOUNDATION FOR EDUCATION&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;/li>
-&lt;li>
-&lt;/li>
-&lt;/ul></description></item><item><title>Dynamic Optimization of Raft Election Parameters based on Network Conditions</title><link>https://skoya76.github.io/publications/2024dicomo/</link><pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2024dicomo/</guid><description/></item><item><title>Projects</title><link>https://skoya76.github.io/projects/</link><pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/projects/</guid><description/></item><item><title>Experience</title><link>https://skoya76.github.io/experience/</link><pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/experience/</guid><description/></item><item><title>Proposal of Selection Guidelines for Geographical SMR Protocols Using Communication Pattern-based Response Time Models (in Japanese)</title><link>https://skoya76.github.io/publications/2023wtcs/</link><pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2023wtcs/</guid><description/></item><item><title>A Proposal of Selection Guideline for Geographical SMR Protocols Using Communication Pattern-based Response Time Models</title><link>https://skoya76.github.io/publications/2023swopp/</link><pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2023swopp/</guid><description/></item><item><title>Selection of Optimal Geographical SMR Protocol and Replica Deployment Based on Communication Patterns</title><link>https://skoya76.github.io/publications/2023ncipsj/</link><pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2023ncipsj/</guid><description/></item><item><title>💵 Grant: Toyohashi University of Technology Overseas Trainee Scholarship</title><link>https://skoya76.github.io/achievements/2022tut/</link><pubDate>Mon, 26 Sep 2022 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/achievements/2022tut/</guid><description>&lt;p>&lt;strong>Grant Amount&lt;/strong>: ¥200,000&lt;/p>
-&lt;p>&lt;strong>Organization&lt;/strong>: Toyohashi University of Technology.&lt;/p></description></item><item><title>Development of a Store Evaluation System Using an Image Caption Generation Model</title><link>https://skoya76.github.io/publications/2021ssi/</link><pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/publications/2021ssi/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kohya Shiozaki&#39;s Website</title>
+    <link>http://localhost:1313/</link>
+      <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <description>Kohya Shiozaki&#39;s Website</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu4263094216211371733.png</url>
+      <title>Kohya Shiozaki&#39;s Website</title>
+      <link>http://localhost:1313/</link>
+    </image>
+    
+    <item>
+      <title>Selection Guidelines for Geographical SMR Protocols: A Communication Pattern-based Latency Modeling Approach</title>
+      <link>http://localhost:1313/publications/2024sss/</link>
+      <pubDate>Sat, 14 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2024sss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>💵 Grant: JASSO Exchange Student Support Program</title>
+      <link>http://localhost:1313/achievements/2024jasso/</link>
+      <pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/achievements/2024jasso/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Grant Amount&lt;/strong&gt;: ¥610,000&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monthly stipend: ¥80,000 for 6 months&lt;/li&gt;
+&lt;li&gt;Additional allowance: ¥130,000&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Organization&lt;/strong&gt;: Japan Student Services Organization.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>🏆 Outstanding Presentation Award: The 20th Workshop on Theoretical Computer Science (WTCS)</title>
+      <link>http://localhost:1313/achievements/2023wtcs/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/achievements/2023wtcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dynamic Optimization of Raft Election Parameters based on Network Measurements</title>
+      <link>http://localhost:1313/publications/2024wtcs/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2024wtcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>💵 Grant: Overseas Training Support for Graduate Students</title>
+      <link>http://localhost:1313/achievements/2024kfe/</link>
+      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/achievements/2024kfe/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Grant Amount&lt;/strong&gt;: ¥300,000&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Organization&lt;/strong&gt;:  KAMINO FOUNDATION FOR EDUCATION&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dynamic Optimization of Raft Election Parameters based on Network Conditions</title>
+      <link>http://localhost:1313/publications/2024dicomo/</link>
+      <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2024dicomo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/projects/</link>
+      <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>http://localhost:1313/experience/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Proposal of Selection Guidelines for Geographical SMR Protocols Using Communication Pattern-based Response Time Models (in Japanese)</title>
+      <link>http://localhost:1313/publications/2023wtcs/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2023wtcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Proposal of Selection Guideline for Geographical SMR Protocols Using Communication Pattern-based Response Time Models</title>
+      <link>http://localhost:1313/publications/2023swopp/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2023swopp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selection of Optimal Geographical SMR Protocol and Replica Deployment Based on Communication Patterns</title>
+      <link>http://localhost:1313/publications/2023ncipsj/</link>
+      <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2023ncipsj/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>💵 Grant: Toyohashi University of Technology Overseas Trainee Scholarship</title>
+      <link>http://localhost:1313/achievements/2022tut/</link>
+      <pubDate>Mon, 26 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/achievements/2022tut/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Grant Amount&lt;/strong&gt;: ¥200,000&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Organization&lt;/strong&gt;: Toyohashi University of Technology.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Development of a Store Evaluation System Using an Image Caption Generation Model</title>
+      <link>http://localhost:1313/publications/2021ssi/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/2021ssi/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

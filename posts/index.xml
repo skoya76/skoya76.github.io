@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog | Kohya Shiozaki's Homepage</title><link>https://skoya76.github.io/posts/</link><atom:link href="https://skoya76.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><description>Blog</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://skoya76.github.io/media/icon_hu4263094216211371733.png</url><title>Blog</title><link>https://skoya76.github.io/posts/</link></image></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog | Kohya Shiozaki&#39;s Website</title>
+    <link>http://localhost:1313/posts/</link>
+      <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <description>Blog</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language>
+    <image>
+      <url>http://localhost:1313/media/icon_hu4263094216211371733.png</url>
+      <title>Blog</title>
+      <link>http://localhost:1313/posts/</link>
+    </image>
+    
+  </channel>
+</rss>
