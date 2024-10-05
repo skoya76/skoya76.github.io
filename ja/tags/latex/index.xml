@@ -1,105 +1,130 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LaTeX | 塩崎功也のホームページ</title><link>https://skoya76.github.io/ja/tags/latex/</link><atom:link href="https://skoya76.github.io/ja/tags/latex/index.xml" rel="self" type="application/rss+xml"/><description>LaTeX</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>ja</language><lastBuildDate>Sat, 05 Oct 2024 00:00:00 +0000</lastBuildDate><image><url>https://skoya76.github.io/media/icon_hu4263094216211371733.png</url><title>LaTeX</title><link>https://skoya76.github.io/ja/tags/latex/</link></image><item><title>Docker, VSCode, Devcontainer を使って LaTeX 環境を構築する</title><link>https://skoya76.github.io/ja/posts/latex-in-docker/</link><pubDate>Sat, 05 Oct 2024 00:00:00 +0000</pubDate><guid>https://skoya76.github.io/ja/posts/latex-in-docker/</guid><description>&lt;p>本記事では、Docker と VSCode の Devcontainer 機能を利用し、仮想環境上で LaTeX 執筆環境を構築する手順を解説します。Docker コンテナを用いることで、ホスト環境を汚さずに LaTeX のフル機能を利用することができる設定を行うことを主な目的としています。&lt;/p>
-&lt;h2 id="1-プロジェクトディレクトリの作成">1. プロジェクトディレクトリの作成&lt;/h2>
-&lt;p>まず、作業用のプロジェクトディレクトリを作成し、その中に &lt;code>.devcontainer&lt;/code> ディレクトリを準備します。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir latex-dev-container
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> latex-dev-container
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir .devcontainer
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2-dev-container-設定ファイルの作成">2. Dev Container 設定ファイルの作成&lt;/h2>
-&lt;p>&lt;code>.devcontainer&lt;/code> ディレクトリ内に &lt;code>devcontainer.json&lt;/code> を作成し、以下の設定を記述します。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;name&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;LaTeX Dev Container&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;build&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;dockerfile&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Dockerfile&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;context&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;..&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;workspaceFolder&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;/workspace&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;settings&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;terminal.integrated.shell.linux&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;/bin/bash&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;latex-workshop.latex.autoBuild.run&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;onSave&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;extensions&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;James-Yu.latex-workshop&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;ms-vscode-remote.remote-containers&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;postCreateCommand&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;latexmk -C&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteUser&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;vscode&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="各設定項目の説明">各設定項目の説明&lt;/h3>
-&lt;ul>
-&lt;li>&lt;strong>&lt;code>dockerfile&lt;/code>&lt;/strong>: 使用する Dockerfile のパスを指定します（&lt;code>.devcontainer&lt;/code> ディレクトリ内の Dockerfile）。&lt;/li>
-&lt;li>&lt;strong>&lt;code>context&lt;/code>&lt;/strong>: Docker ビルドのコンテキストを指定します（&lt;code>..&lt;/code> は親ディレクトリを指します）。&lt;/li>
-&lt;li>&lt;strong>&lt;code>workspaceFolder&lt;/code>&lt;/strong>: Dev Container 内での作業ディレクトリを指定します（&lt;code>/workspace&lt;/code>）。&lt;/li>
-&lt;li>&lt;strong>&lt;code>settings&lt;/code>&lt;/strong>: VSCode の設定で、LaTeX Workshop 拡張機能の自動ビルド設定を行います。
-&lt;ul>
-&lt;li>&lt;strong>&lt;code>latex-workshop.latex.autoBuild.run&lt;/code>&lt;/strong>: LaTeX ファイルを保存した際に自動ビルドを実行します。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>&lt;code>extensions&lt;/code>&lt;/strong>: 使用する VSCode 拡張機能を指定します。
-&lt;ul>
-&lt;li>&lt;code>James-Yu.latex-workshop&lt;/code>: LaTeX Workshop 拡張機能。&lt;/li>
-&lt;li>&lt;code>ms-vscode-remote.remote-containers&lt;/code>: Remote - Containers 拡張機能。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>&lt;code>postCreateCommand&lt;/code>&lt;/strong>: コンテナ作成後に自動的に実行されるコマンド（&lt;code>latexmk&lt;/code> のクリーンアップコマンドを実行）。&lt;/li>
-&lt;li>&lt;strong>&lt;code>remoteUser&lt;/code>&lt;/strong>: コンテナ内で使用するデフォルトユーザーを &lt;code>vscode&lt;/code> に設定します。&lt;/li>
-&lt;/ul>
-&lt;h2 id="3-dockerfile-の作成">3. Dockerfile の作成&lt;/h2>
-&lt;p>次に、以下の内容を &lt;code>.devcontainer/Dockerfile&lt;/code> として保存します。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span class="line">&lt;span class="cl">&lt;span class="k">FROM&lt;/span>&lt;span class="s"> debian:bookworm-slim&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">ENV&lt;/span> &lt;span class="nv">DEBIAN_FRONTEND&lt;/span>&lt;span class="o">=&lt;/span>noninteractive
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">RUN&lt;/span> apt-get update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\ &lt;/span> apt-get install -y texlive-full latexmk vim git curl &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\ &lt;/span> apt-get clean&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> useradd -m vscode&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">WORKDIR&lt;/span>&lt;span class="s"> /workspace&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="各設定項目の説明-1">各設定項目の説明&lt;/h3>
-&lt;ul>
-&lt;li>&lt;strong>&lt;code>debian:bookworm-slim&lt;/code>&lt;/strong>: 最新の Debian ベースの軽量イメージを使用します。&lt;/li>
-&lt;li>&lt;strong>パッケージのインストール&lt;/strong>: LaTeX 関連のパッケージ（&lt;code>texlive-full&lt;/code>, &lt;code>latexmk&lt;/code>, &lt;code>vim&lt;/code>, &lt;code>git&lt;/code>, &lt;code>curl&lt;/code> など）をインストールします。&lt;/li>
-&lt;li>&lt;strong>ユーザー作成&lt;/strong>: &lt;code>vscode&lt;/code> ユーザーを作成し、デフォルトの作業ユーザーとして設定します。&lt;/li>
-&lt;li>&lt;strong>作業ディレクトリ&lt;/strong>: &lt;code>/workspace&lt;/code> を作業ディレクトリに指定します。&lt;/li>
-&lt;/ul>
-&lt;h2 id="4-dev-container-の起動">4. Dev Container の起動&lt;/h2>
-&lt;ol>
-&lt;li>VSCode でプロジェクトディレクトリを開き、左下の緑色のボタン（Remote Explorer）をクリックします。&lt;/li>
-&lt;li>「&lt;strong>Reopen in Container&lt;/strong>」を選択し、コンテナのビルドと起動を待ちます。&lt;/li>
-&lt;/ol>
-&lt;h2 id="5-latex-ファイルの作成と-pdf-の生成">5. LaTeX ファイルの作成と PDF の生成&lt;/h2>
-&lt;ol>
-&lt;li>
-&lt;p>コンテナが起動したら、新しいファイル &lt;code>main.tex&lt;/code> を作成し、以下のサンプル LaTeX コードを貼り付けます。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-latex" data-lang="latex">&lt;span class="line">&lt;span class="cl">&lt;span class="k">\documentclass&lt;/span>&lt;span class="nb">{&lt;/span>article&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\begin&lt;/span>&lt;span class="nb">{&lt;/span>document&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\title&lt;/span>&lt;span class="nb">{&lt;/span>LaTeX Dev Container Example&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\author&lt;/span>&lt;span class="nb">{&lt;/span>Kohya Shiozaki&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\date&lt;/span>&lt;span class="nb">{&lt;/span>&lt;span class="k">\today&lt;/span>&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\maketitle&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\section&lt;/span>&lt;span class="nb">{&lt;/span>Introduction&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">This document is compiled inside a Docker Dev Container using VSCode.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">\end&lt;/span>&lt;span class="nb">{&lt;/span>document&lt;span class="nb">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>ファイルを保存（&lt;code>Ctrl+S&lt;/code>）すると、LaTeX Workshop が自動的に &lt;code>latexmk&lt;/code> を実行し、PDF ファイル &lt;code>main.pdf&lt;/code> が生成されます。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>生成された PDF をプレビューするには、左側の LaTeX Workshop のサイドバーにある「&lt;strong>View LaTeX PDF&lt;/strong>」を選択します。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h2 id="6-不要な一時ファイルのクリーンアップ">6. 不要な一時ファイルのクリーンアップ&lt;/h2>
-&lt;p>&lt;code>latexmk&lt;/code> によって生成された一時ファイル（&lt;code>.aux&lt;/code>, &lt;code>.log&lt;/code>, &lt;code>.fls&lt;/code> など）が不要な場合は、以下のコマンドをコンテナ内で実行してクリーンアップします。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">latexmk -c
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>これにより、ビルド時に生成された一時ファイルを削除し、ディレクトリをクリーンな状態に保つことができます。&lt;/p>
-&lt;h2 id="7-gitignore-への追加">7. &lt;code>.gitignore&lt;/code> への追加&lt;/h2>
-&lt;p>バージョン管理システムで &lt;code>.fls&lt;/code> などの一時ファイルを無視したい場合は、&lt;code>.gitignore&lt;/code> に以下を追加します。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">*.fls
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*.aux
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*.log
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*.bbl
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*.blg
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>これにより、これらの一時ファイルが Git などに含まれなくなり、管理がしやすくなります。&lt;/p>
-&lt;p>これで、VSCode の Dev Container と LaTeX Workshop を使用した LaTeX 執筆環境の設定が完了です。以上の設定を &lt;code>.md&lt;/code> ファイルとして保存し、ブログ記事やドキュメントとしてご活用ください。&lt;/p>
-&lt;p>&lt;strong>本記事は、ChatGPT を利用して執筆しました。なお、この記事は私自身の備忘録として作成したものであり、内容を参考にした結果生じた一切の問題や損害について、私は責任を負いかねますのでご了承ください。&lt;/strong>&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LaTeX | 塩崎功也のホームページ</title>
+    <link>http://localhost:1313/ja/tags/latex/</link>
+      <atom:link href="http://localhost:1313/ja/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <description>LaTeX</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>ja</language>
+    <image>
+      <url>http://localhost:1313/media/icon_hu4263094216211371733.png</url>
+      <title>LaTeX</title>
+      <link>http://localhost:1313/ja/tags/latex/</link>
+    </image>
+    
+    <item>
+      <title>Docker, VSCode, Devcontainer を使って LaTeX 環境を構築する</title>
+      <link>http://localhost:1313/ja/posts/latex-in-docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ja/posts/latex-in-docker/</guid>
+      <description>&lt;h1 id=&#34;docker-vscode-devcontainer-を使って-latex-環境を構築する&#34;&gt;Docker, VSCode, Devcontainer を使って LaTeX 環境を構築する&lt;/h1&gt;
+&lt;p&gt;本記事では、Docker と VSCode の Devcontainer 機能を利用し、仮想環境上で LaTeX 執筆環境を構築する手順を解説します。Docker コンテナを用いることで、ホスト環境を汚さずに LaTeX のフル機能を利用することができる設定を行うことを主な目的としています。&lt;/p&gt;
+&lt;h2 id=&#34;1-プロジェクトディレクトリの作成&#34;&gt;1. プロジェクトディレクトリの作成&lt;/h2&gt;
+&lt;p&gt;まず、作業用のプロジェクトディレクトリを作成し、その中に &lt;code&gt;.devcontainer&lt;/code&gt; ディレクトリを準備します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir latex-dev-container
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; latex-dev-container
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir .devcontainer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-dev-container-設定ファイルの作成&#34;&gt;2. Dev Container 設定ファイルの作成&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;.devcontainer&lt;/code&gt; ディレクトリ内に &lt;code&gt;devcontainer.json&lt;/code&gt; を作成し、以下の設定を記述します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;LaTeX Dev Container&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;build&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;dockerfile&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Dockerfile&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;context&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;..&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;workspaceFolder&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/workspace&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;settings&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;terminal.integrated.shell.linux&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/bash&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;latex-workshop.latex.autoBuild.run&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;onSave&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;extensions&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;James-Yu.latex-workshop&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;ms-vscode-remote.remote-containers&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;postCreateCommand&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;latexmk -C&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;remoteUser&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;vscode&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;各設定項目の説明&#34;&gt;各設定項目の説明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;dockerfile&lt;/code&gt;&lt;/strong&gt;: 使用する Dockerfile のパスを指定します（&lt;code&gt;.devcontainer&lt;/code&gt; ディレクトリ内の Dockerfile）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;context&lt;/code&gt;&lt;/strong&gt;: Docker ビルドのコンテキストを指定します（&lt;code&gt;..&lt;/code&gt; は親ディレクトリを指します）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;workspaceFolder&lt;/code&gt;&lt;/strong&gt;: Dev Container 内での作業ディレクトリを指定します（&lt;code&gt;/workspace&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;settings&lt;/code&gt;&lt;/strong&gt;: VSCode の設定で、LaTeX Workshop 拡張機能の自動ビルド設定を行います。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;latex-workshop.latex.autoBuild.run&lt;/code&gt;&lt;/strong&gt;: LaTeX ファイルを保存した際に自動ビルドを実行します。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;extensions&lt;/code&gt;&lt;/strong&gt;: 使用する VSCode 拡張機能を指定します。
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;James-Yu.latex-workshop&lt;/code&gt;: LaTeX Workshop 拡張機能。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ms-vscode-remote.remote-containers&lt;/code&gt;: Remote - Containers 拡張機能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;postCreateCommand&lt;/code&gt;&lt;/strong&gt;: コンテナ作成後に自動的に実行されるコマンド（&lt;code&gt;latexmk&lt;/code&gt; のクリーンアップコマンドを実行）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;remoteUser&lt;/code&gt;&lt;/strong&gt;: コンテナ内で使用するデフォルトユーザーを &lt;code&gt;vscode&lt;/code&gt; に設定します。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-dockerfile-の作成&#34;&gt;3. Dockerfile の作成&lt;/h2&gt;
+&lt;p&gt;次に、以下の内容を &lt;code&gt;.devcontainer/Dockerfile&lt;/code&gt; として保存します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-dockerfile&#34; data-lang=&#34;dockerfile&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; debian:bookworm-slim&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ENV&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEBIAN_FRONTEND&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;noninteractive
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;RUN&lt;/span&gt; apt-get update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;   apt-get install -y texlive-full latexmk vim git curl &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;   apt-get clean&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;RUN&lt;/span&gt; useradd -m vscode&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WORKDIR&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; /workspace&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;各設定項目の説明-1&#34;&gt;各設定項目の説明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;debian:bookworm-slim&lt;/code&gt;&lt;/strong&gt;: 最新の Debian ベースの軽量イメージを使用します。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;パッケージのインストール&lt;/strong&gt;: LaTeX 関連のパッケージ（&lt;code&gt;texlive-full&lt;/code&gt;, &lt;code&gt;latexmk&lt;/code&gt;, &lt;code&gt;vim&lt;/code&gt;, &lt;code&gt;git&lt;/code&gt;, &lt;code&gt;curl&lt;/code&gt; など）をインストールします。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ユーザー作成&lt;/strong&gt;: &lt;code&gt;vscode&lt;/code&gt; ユーザーを作成し、デフォルトの作業ユーザーとして設定します。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作業ディレクトリ&lt;/strong&gt;: &lt;code&gt;/workspace&lt;/code&gt; を作業ディレクトリに指定します。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-dev-container-の起動&#34;&gt;4. Dev Container の起動&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;VSCode でプロジェクトディレクトリを開き、左下の緑色のボタン（Remote Explorer）をクリックします。&lt;/li&gt;
+&lt;li&gt;「&lt;strong&gt;Reopen in Container&lt;/strong&gt;」を選択し、コンテナのビルドと起動を待ちます。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-latex-ファイルの作成と-pdf-の生成&#34;&gt;5. LaTeX ファイルの作成と PDF の生成&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;コンテナが起動したら、新しいファイル &lt;code&gt;main.tex&lt;/code&gt; を作成し、以下のサンプル LaTeX コードを貼り付けます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\documentclass&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;article&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\begin&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;document&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\title&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;LaTeX Dev Container Example&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\author&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;Kohya Shiozaki&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\date&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;\today&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\maketitle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\section&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;Introduction&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This document is compiled inside a Docker Dev Container using VSCode.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;\end&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{&lt;/span&gt;document&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ファイルを保存（&lt;code&gt;Ctrl+S&lt;/code&gt;）すると、LaTeX Workshop が自動的に &lt;code&gt;latexmk&lt;/code&gt; を実行し、PDF ファイル &lt;code&gt;main.pdf&lt;/code&gt; が生成されます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成された PDF をプレビューするには、左側の LaTeX Workshop のサイドバーにある「&lt;strong&gt;View LaTeX PDF&lt;/strong&gt;」を選択します。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-不要な一時ファイルのクリーンアップ&#34;&gt;6. 不要な一時ファイルのクリーンアップ&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;latexmk&lt;/code&gt; によって生成された一時ファイル（&lt;code&gt;.aux&lt;/code&gt;, &lt;code&gt;.log&lt;/code&gt;, &lt;code&gt;.fls&lt;/code&gt; など）が不要な場合は、以下のコマンドをコンテナ内で実行してクリーンアップします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;latexmk -c
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これにより、ビルド時に生成された一時ファイルを削除し、ディレクトリをクリーンな状態に保つことができます。&lt;/p&gt;
+&lt;h2 id=&#34;7-gitignore-への追加&#34;&gt;7. &lt;code&gt;.gitignore&lt;/code&gt; への追加&lt;/h2&gt;
+&lt;p&gt;バージョン管理システムで &lt;code&gt;.fls&lt;/code&gt; などの一時ファイルを無視したい場合は、&lt;code&gt;.gitignore&lt;/code&gt; に以下を追加します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*.fls
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*.aux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*.bbl
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*.blg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これにより、これらの一時ファイルが Git などに含まれなくなり、管理がしやすくなります。&lt;/p&gt;
+&lt;p&gt;これで、VSCode の Dev Container と LaTeX Workshop を使用した LaTeX 執筆環境の設定が完了です。以上の設定を &lt;code&gt;.md&lt;/code&gt; ファイルとして保存し、ブログ記事やドキュメントとしてご活用ください。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本記事は、ChatGPT を利用して執筆しました。なお、この記事は私自身の備忘録として作成したものであり、内容を参考にした結果生じた一切の問題や損害について、私は責任を負いかねますのでご了承ください。&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
